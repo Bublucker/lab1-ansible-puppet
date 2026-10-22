@@ -1,0 +1,37 @@
+   - name: Deploy Apache Web Server via Ansible
+     hosts: webservers
+     become: yes
+     tasks:
+       - name: Установить Apache
+         apt:
+           name: apache2
+           state: present
+           update_cache: yes
+
+       - name: Изменить порт Apache на 8080
+         lineinfile:
+           path: /etc/apache2/ports.conf
+           regexp: '^Listen 80'
+           line: 'Listen 8080'
+         notify: Перезапустить Apache
+
+       - name: Запустить службу Apache
+         service:
+           name: apache2
+           state: started
+           enabled: yes
+
+       - name: Развернуть веб-приложение (index.html)
+         copy:
+           src: ~/lab1_app/index.html
+           dest: /var/www/html/index.html
+           owner: www-data
+           group: www-data
+           mode: '0644'
+         notify: Перезапустить Apache
+
+     handlers:
+       - name: Перезапустить Apache
+         service:
+           name: apache2
+           state: restarted

@@ -1,0 +1,36 @@
+# Чувствительные данные
+*.key
+*.pem
+key.json
+*.secret
+
+# Системные файлы
+.DS_Store
+Thumbs.db
+
+# Логи
+*.log
+
+# Временные файлы
+*.tmp
+*.swp
+*~
+
+# Ansible
+*.retry
+ansible.cfg
+
+# IDE
+.vscode/
+.idea/
+*.iml
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# OS
+desktop.ini

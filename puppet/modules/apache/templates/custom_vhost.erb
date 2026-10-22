@@ -1,0 +1,10 @@
+   <VirtualHost *:8080>
+       ServerName <%= @server_name || 'localhost' %>
+       DocumentRoot /var/www/custom_html
+       
+       <Directory /var/www/custom_html>
+           Options Indexes FollowSymLinks
+           AllowOverride All
+           Require all granted
+       </Directory>
+   </VirtualHost>
