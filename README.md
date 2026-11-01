@@ -37,3 +37,8 @@ lab1-project/
 ```bash
 sudo apt update && sudo apt install ansible -y
 ansible-playbook -i ansible/hosts.ini ansible/apache-playbook.yml --ask-become-pass
+
+Puppet
+```bash 
+sudo apt install puppet -y
+sudo puppet apply puppet/manifests/site.pp --modulepath=puppet/modules
